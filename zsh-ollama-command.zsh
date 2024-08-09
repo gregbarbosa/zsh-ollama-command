@@ -73,8 +73,15 @@ fzf_ollama_commands() {
         "content":  "'$ZSH_OLLAMA_COMMANDS_MESSAGE_CONTENT'"
       }
     ],
-    "stream": false
+    "stream": false,
+    "options": {
+      "temperature": 1.0
+    },
+    "format": "json"
   }'
+
+  # Debugging
+  echo "[$(date +"%Y%m%d_%H%M%S")] ZSH_OLLAMA_COMMANDS_REQUEST_BODY %s\n" "$ZSH_OLLAMA_COMMANDS_REQUEST_BODY" >> ~/.oh-my-zsh/custom/plugins/zsh-ollama-command/logs/log_${ZSH_OLLAMA_TIMESTAMPS}.txt
 
   ZSH_OLLAMA_COMMANDS_RESPONSE=$(curl --silent "${ZSH_OLLAMA_URL}/api/chat" \
     -H "Content-Type: application/json" \
