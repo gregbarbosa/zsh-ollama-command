@@ -113,7 +113,7 @@ fzf_ollama_commands() {
 
   tput cuu 1 # cleanup waiting message
 
-  ZSH_OLLAMA_COMMANDS_SELECTED=$(echo $ZSH_OLLAMA_COMMANDS_SUGGESTION | jq -r '.[]' | fzf --ansi --height=~10 --cycle)
+  ZSH_OLLAMA_COMMANDS_SELECTED=$(echo $ZSH_OLLAMA_COMMANDS_SUGGESTION | jq -r '.[]' | fzf --ansi --height=~40 --cycle --layout=reverse --border --header-first --header 'Select your command')
   BUFFER=$ZSH_OLLAMA_COMMANDS_SELECTED
 
   echo "[$(date +"%Y%m%d_%H%M%S")] ZSH_OLLAMA_COMMANDS_SELECTED %s\n" "$ZSH_OLLAMA_COMMANDS_SELECTED" >> ~/.oh-my-zsh/custom/plugins/zsh-ollama-command/logs/log_${ZSH_OLLAMA_TIMESTAMPS}.txt
